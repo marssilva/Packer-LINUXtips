@@ -30,6 +30,7 @@
       - kubeadm
       - kubelet
       - kubectl
+      - htop
   notify:
     - Restart Kubelet
 

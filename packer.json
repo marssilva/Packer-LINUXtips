@@ -1,5 +1,14 @@
 {
     "_comment": "Filter por name e owners",
+
+    "variables": {
+        "aws_region": "us-east-1",
+        "aws_owners": "099720109477",
+        "aws_ami_name": null
+    },
+
+    "sensitive-variables": ["aws_owners"],
+    
     "builders": [
         {
             "source_ami_filter": {
@@ -9,15 +18,15 @@
                     "root-device-type": "ebs"
                 },
                 "owners": [
-                    "099720109477"
+                    "{{ user `aws_owners` }}"
                 ],
                 "most_recent": true
             },
             "type": "amazon-ebs",
-            "region": "us-east-1",
+            "region": "{{ user `aws_region` }}",
             "instance_type": "t2.medium",
             "ssh_username": "ubuntu",
-            "ami_name": "packer_AWS-Marcos {{timestamp}}",
+            "ami_name": "{{ user `aws_ami_name` }} {{timestamp}}",
             "ami_description": "from {{.SourceAMI}}",
             "tags": {
                 "OS_Version": "Ubuntu",
@@ -40,6 +49,15 @@
             "ansible_env_vars": [
                 "ANSIBLE_HOST_KEY_CHECKING=False"
             ]
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "compress",
+            "output": "archive.zip"
+        },
+        {
+            "type": "manifest"
         }
     ]
 }
