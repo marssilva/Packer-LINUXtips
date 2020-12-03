@@ -3,3 +3,5 @@
 ### Install colection via galaxy 
 
 - ansible-galaxy collection install community.kubernetes
+
+
