@@ -1,0 +1,7 @@
+version: '1'
+
+tools:
+  ansibleLint:
+    files:
+      - install_k8s/**/*.yml
+      - playbook.yml
