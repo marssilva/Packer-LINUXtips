@@ -3,4 +3,4 @@ version: '1'
 tools:
   ansibleLint:
     files:
-      - ['playbook.yml', 'install_k8s/**/*.yml', '!install_k8s/roles/install_monit_tools/tasks/*.yml']
+      - ['install_k8s/**/*.yml', '!install_k8s/roles/install_monit_tools/tasks/*.yml']
