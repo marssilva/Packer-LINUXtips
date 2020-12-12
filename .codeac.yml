@@ -1,0 +1,6 @@
+version: '1'
+
+tools:
+  ansibleLint:
+    files:
+      -  ['install_k8s/roles/create_cluster/**/*.yml', 'install_k8s/roles/install-helm/**/*.yml', 'install_k8s/roles/install-k8s/**/*.yml', 'install_k8s/roles/join-workers/**/*.yml']
